@@ -54,10 +54,12 @@ export function useBlobWorker<TInput, TOutput>(
 // Sorting function with artificial delay
 const sortArray = (arr: number[]) => {
   let i = 0;
-  while (i < 1000000) {
+  while (i < 10000000000) {
     i++;
   }
-  return [...new Set(arr.sort((a, b) => a - b))].filter((n) => n % 2 === 0);
+  return Array.from(new Set<number>(arr.sort((a, b) => a - b))).filter(
+    (n) => n % 2 === 0
+  );
 };
 
 export default function App() {
